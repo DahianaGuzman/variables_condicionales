@@ -1,90 +1,77 @@
-print('''CONVERSOR DE TEMPERATURA
+print('''CALCULADORA DE DESCUENTOS
 
-Las unidades de temperatura para nuestro conversor de
-temperatura son:
-
-- para Celsius usa: C
-- Para Fahrenheit usa: F
-- para Kelvin usa: K \n''')
-# Se dan al usuario los símbolos para implementar según el tipo de unidad
-
-# TAREAS:
-# - unidades en mayúscula y en minúscula (RESUELTO con comparaciones explícitas)
-# - declarar error si introducen una letra (RESUELTO con try-except)
+Conoce aquí los increíbles descuentos de tu compra según nuestras promociones\n''')
+# Se explica la funcionalidad de la aplicación.
 
 try:
-    # Se solicita al usuario el valor de la temperatura, convirtiéndolo a entero.
-    # Se usa un bloque try-except para manejar entradas no numéricas.
-    temp = int(input("Introduce la temperatura "))
+    precio = int(input("Ingresa el valor de tu compra:"))
+    print("¿Tienes tarjeta de fidelidad con nosotros?")
 
-    # Se solicita el tipo de unidad actual y la que se desea obtener.
-    # NO usamos .upper() o .lower() para que podamos verificar ambas versiones (mayúscula/minúscula)
-    # explícitamente en los 'if/elif' anidados.
-    actual = input("Introduce el tipo de escala actual ")
-    final = input("Introduce el tipo de escala a convertir ")
+    menu = " 1.Si \n 2.No \n"
+    print("Ingresa 1 o 2 ")
+    tarjeta_fidelidad = input(menu)
+# Se solicita al usuario el valor de su compra y se confirma si cuenta con tarjeta de fidelidad
 
-    # Se establecerán los diferentes casos según la unidad actual.
-    # Cada 'case' ahora verifica tanto la versión mayúscula como minúscula de la unidad.
-    match actual:
-        case "C" | "c": # Acepta 'C' o 'c' como unidad actual
-            # La condición anterior 'final == "F" or "f"' siempre era True.
-            # Ahora, verificamos explícitamente si 'final' es "F" o si 'final' es "f".
-            if final == "F" or final == "f": # Acepta 'F' o 'f' como unidad final
-                temp_final = temp * 9/5 + 32
-                # Formato de salida con f-string y dos decimales
-                print(f"{temp} C, es igual a {temp_final:.2f} F")
-            # Similar a la anterior, corregida para verificar explícitamente "K" o "k".
-            elif final == "K" or final == "k": # Acepta 'K' o 'k' como unidad final
-                temp_final = temp + 273.15
-                # Formato de salida con f-string y dos decimales
-                print(f"{temp} C, es igual a {temp_final:.2f} K")
-            # Manejo para unidad final inválida para Celsius
-            else:
-                print("Error: Unidad final no válida para la conversión desde Celsius. Usa F o K.")
+    descuento = 0.0
+# Se inicializa el descuento. Esto es clave para evitar errores si no se cumple ninguna condición de descuento.
+
+# Se establecerán los diferentes casos según el total de la compra para el descuento base.
+    if precio > 100000:
+        descuento = 0.15
+# Si el precio es mayor a $100,000, aplicar 15% de descuento.
         
-        case "F" | "f": # Acepta 'F' o 'f' como unidad actual
-            # Corregida para verificar explícitamente "C" o "c".
-            if final == "C" or final == "c": # Acepta 'C' o 'c' como unidad final
-                temp_final = (temp - 32) * 5/9
-                # Formato de salida con f-string y dos decimales
-                print(f"{temp} F, es igual a {temp_final:.2f} C")
-            # Ya estaba bien en tu código, pero la incluyo para consistencia.
-            elif final == "K" or final == "k": # Acepta 'K' o 'k' como unidad final
-                temp_final = (temp - 32) * 5/9 + 273.15
-                # Formato de salida con f-string y dos decimales
-                print(f"{temp} F, es igual a {temp_final:.2f} K")
-            # Manejo para unidad final inválida para Fahrenheit
-            else:
-                print("Error: Unidad final no válida para la conversión desde Fahrenheit. Usa C o K.")
+    elif precio >= 50000 and precio <= 100000:
+        descuento = 0.10
+# Si el precio está entre $50,000 y $100,000, aplicar 10% de descuento.
         
-        case "K" | "k": # Acepta 'K' o 'k' como unidad actual
-            # Ya estaba bien en tu código, pero la incluyo para consistencia.
-            if final == "C" or final == "c": # Acepta 'C' o 'c' como unidad final
-                temp_final = temp - 273.15
-                # Formato de salida con f-string y dos decimales
-                print(f"{temp} K, es igual a {temp_final:.2f} C")
-            # Ya estaba bien en tu código, pero la incluyo para consistencia.
-            elif final == "F" or final == "f": # Acepta 'F' o 'f' como unidad final
-                temp_final = (temp - 273.15) * 9/5 + 32
-                # Formato de salida con f-string y dos decimales
-                print(f"{temp} K, es igual a {temp_final:.2f} F")
-            # Manejo para unidad final inválida para Kelvin
-            else:
-                print("Error: Unidad final no válida para la conversión desde Kelvin. Usa C o F.")
-        
-        case _:
-            # Mensaje de error para unidad inicial inválida
-            print("Error: Introduce una unidad inicial válida (C, F, K).")
-            # Este mensaje se muestra cuando la unidad inicial (`actual`) ingresada
-            # por el usuario no coincide con ninguna de las opciones válidas (C, F, K),
-            # sin importar si está en mayúscula o minúscula.
+    elif precio >= 10000 and precio <= 49999:
+        descuento = 0.05
+# Si el precio está entre $10,000 y $49,999, aplicar 5% de descuento.
+
+    elif precio > 0 and precio < 10000:
+        descuento = 0.0
+        # Eliminamos el mensaje "Tu valor de compra no aplica para el descuento" de aquí.
+        # Esto evita la confusión si luego aplica el descuento de fidelidad.
+# Si el precio es mayor que 0 y menor que 10000, se aplica el 0% de descuento base por monto.
+
+    else:
+        # Este 'else' ahora solo se activa si el precio es 0 o negativo, que son valores inválidos.
+        print("Error: El valor de tu compra es inválido (debe ser mayor a 0).")
+        descuento = 0.0 # Aseguramos que descuento tenga un valor.
+        precio = 0 # Forzamos el precio a 0 para que no se intente calcular el precio final si es inválido.
+# Si el usuario establece un valor de entrada inválido (0 o negativo).
+
+
+    # Solo calcula el precio final y aplica descuentos adicionales si el precio inicial fue válido (mayor que 0).
+    if precio > 0:
+        precio_final = precio - (precio * descuento)
+    # Se calcula el precio final con el descuento base.
+
+        if tarjeta_fidelidad == "1":
+            descuento_fidelidad = 0.05
+            precio_final_fidelidad = precio_final - (precio_final * descuento_fidelidad)
+            # Este print está AHORA CORRECTAMENTE INDENTADO dentro del 'if'.
+            print(f"EL PRECIO FINAL CON NUESTROS SÚPER DESCUENTOS ES: ${precio_final_fidelidad:,.2f}")
+    # Se agrega el descuento adicional de tarjeta de fidelidad si aplica.
+            
+        elif tarjeta_fidelidad == "2":
+            # Este 'elif' ahora es válido y su 'print' está correctamente indentado.
+            print(f"EL PRECIO FINAL CON NUESTROS SÚPER DESCUENTOS ES: ${precio_final:,.2f}")
+    # Si no aplica el descuento por tarjeta de fidelidad, solo se imprime el precio_final (solo con el primer descuento).
+        else:
+            # Este 'else' maneja entradas de tarjeta de fidelidad que no son "1" ni "2".
+            print("Error: Opción de tarjeta de fidelidad no válida. Se aplicará solo el descuento base.")
+            print(f"EL PRECIO FINAL CON NUESTROS SÚPER DESCUENTOS ES: ${precio_final:,.2f}")
+    else:
+        # Este mensaje se mostrará si el precio inicial fue 0 o negativo.
+        print("No se pudo calcular el precio final debido a un valor de compra no válido (menor o igual a cero).")
+
 
 except ValueError:
-    print("Error: Debes ingresar un valor numérico para la temperatura, no letras.")
-# Maneja el error si el usuario no introduce un número válido para la temperatura.
+    print("Error: Debes ingresar un valor numérico para el precio de tu compra, no letras.")
+# Este bloque captura el error si el usuario no introduce un número válido para el precio.
+
+
 except Exception as e:
     print(f"Ocurrió un error inesperado: {e}")
-    # Este bloque genérico captura cualquier error que no sea un ValueError,
-    # como errores de lógica imprevistos o problemas del sistema.
-    # Imprime el mensaje de error específico que Python genera (guardado en 'e'),
-    # lo cual es crucial para la depuración y para entender por qué falló el programa.
+# Captura otros errores inesperados.
