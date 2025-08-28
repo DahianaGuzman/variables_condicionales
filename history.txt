@@ -1,0 +1,100 @@
+    1  cd Downloads/
+    2  mkdir variables_condicionales
+    3  ls
+    4  cd variables_condicionales/
+    5  mkdir calculadora_aritmetica
+    6  mkdir conversor_temperatura
+    7  mkdir verificador_votantes
+    8  mkdir aplicador_descuentos
+    9  cd ..
+   10  mv 1.pseudocódigo_diagrama.docx ~/variables_condicionales/calculadora:aritmetica/
+   11  mv 1.pseudocódigo_diagrama.docx variables_condicionales/
+   12  mv 2.\ pseudocódigo_diagrama.docx variables_condicionales/
+   13  mv 3.\ pseudocódigo_diagrama.docx variables_condicionales/
+   14  mv 4.\ pseudocódigo_diagrama.docx variables_condicionales/
+   15  mv README.MD.docx variables_condicionales/
+   16  mv Variabless y Condicionales.pptx calculadora_aritmetica/
+   17  mv Variabless y Condicionales.pptx variables_condicionales/
+   18  mv Variables y Condicionales.pptx variables_condicionales/
+   19  mv Variables/y/Condicionales.pptx variables_condicionales/
+   20  cd variables_condicionales/
+   21  mv 1.pseudocódigo_diagrama.docx calculadora_aritmetica/
+   22  mv 2.\ pseudocódigo_diagrama.docx conversor_temperatura/
+   23  mv 3.\ pseudocódigo_diagrama.docx verificador_votantes/
+   24  mv 4.\ pseudocódigo_diagrama.docx aplicador_descuentos/
+   25  ls
+   26  touch readme.md
+   27  cd calculadora_aritmetica/
+   28  touch calculadora.py
+   29  cd ..
+   30  cd conversor_temperatura/
+   31  touch temperatura.py
+   32  cd ..
+   33  cd verificador_votantes/
+   34  touch edad_votante.py
+   35  cd ..
+   36  cd aplicador_descuentos/
+   37  touch descuento_tienda.py
+   38  cd ..
+   39  code calculadora.py
+   40  touch history.txt
+   41  nano calculadora.py
+   42  nano temperatura.py
+   43  cd verificador_votantes/
+   44  ls
+   45  nano edad_votante.py 
+   46  cd ..
+   47  cd aplicador_descuentos/
+   48  ls
+   49  nano descuento_tienda.py 
+   50  CD ..
+   51  cd ..
+   52  git init
+   53  git config user.name "DahianaGuzman"
+   54  git config user.email "dahianacelenyguzman@gmail.com"
+   55  git add readme.md 
+   56  git commit -m "guia de uso para las diferentes aplicaciones"
+   57  git add history.txt 
+   58  git commit -m "historial comandos gitbash"
+   59  git add Variables\ y\ Condicionales.pptx 
+   60  git commit -m "presentación repositorio"
+   61  git add README.MD.docx 
+   62  git commit -m "borrador readme.md"
+   63  git add verificador_votantes
+   64  git commit -m "apliacación validadora de votantes en diferentes paises"
+   65  cd verificador_votantes/
+   66  git add edad_votante.py 
+   67  git commit -m "Add: codigo del programa"
+   68  git add 3.\ pseudocódigo_diagrama.docx 
+   69  git commit -m "Add: pseudocodigo y diagrama"
+   70  ls
+   71  git add .
+   72  git commit -m "apliacación validadora de votantes en diferentes paises"
+   73  cd ..
+   74  cd calculadora_aritmetica/
+   75  ls
+   76  ls
+   77  git add .
+   78  cd ..
+   79  cd calculadora_aritmetica/
+   80  git add .
+   81  git commit -m "apliacación calculadora basica aritmetica"
+   82  cd ..
+   83  cd conversor_temperatura/
+   84  git add .
+   85  git commit -m "aplicación conversora de temperatura a diferentes unidades"
+   86  cd ..
+   87  cd aplicador_descuentos/
+   88  git add .
+   89  git commit -m "aplicación generadora de descuentos para tiendas"
+   90  cd ..
+   91  git log
+   92  git add history.txt 
+   93  git commit -m "historial comandos gitbash"
+   94  git log
+   95  git status
+   96  git branch -M main
+   97  git status
+   98  git remote add origin https://github.com/DahianaGuzman/variables_condicionales.git
+   99  git push -u origin main
+  100  history > history.txt 
